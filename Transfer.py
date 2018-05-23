@@ -3,7 +3,7 @@
 
 import xlwt
 
-with open('C:\\Users\\KATHY\\Desktop\\ZZW\\Virtual Reference Desk Thesaurus.txt', 'r', encoding="UTF-8") as f:
+with open('Virtual Reference Desk Thesaurus.txt', 'r', encoding="UTF-8") as f:
     data = f.readlines()
 
     len_data = len(data)
@@ -15,22 +15,21 @@ with open('C:\\Users\\KATHY\\Desktop\\ZZW\\Virtual Reference Desk Thesaurus.txt'
 
     index = []
     for i in range(0, len_data - 1):
-        data[i] = data[i][0:-1]  # 删除换行符'\n'
+        data[i] = data[i][1:-1]  # 删除换行符'\n'
         print(data[i])
         if data[i] in num:
             index.append(i)
-    print(index)#获得数字的索引
+    #print(index)#获得数字的索引
 
 len_index = len(index)
 
-# d = {}
 # 类型 0 empty, 1 string, 2 number, 3 date, 4 boolean, 5 error
 heading = ['No.', 'Word', 'Use', 'UF', 'BT', 'NT', 'RT']
 file2 = xlwt.Workbook(encoding='utf-8', style_compression=0)
 table = file2.add_sheet('VRD', cell_overwrite_ok=True)
 
 # 写入数据table.write(行,列,value)
-for i in range(0, 9):
+for i in range(0, 7):
     table.write(0, i, heading[i])  # 写入标题
 
 for j in range(0, len_index):
